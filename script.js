@@ -56,19 +56,19 @@ window.addEventListener('scroll', () => {
 });
 
 // Header background change on scroll
-// window.addEventListener('scroll', () => {
-//     const header = document.querySelector('.header');
-//     if (window.scrollY > 100) {
-//         header.style.background = 'rgba(76, 175, 80, 0.95)';
-//         header.style.backdropFilter = 'blur(10px)';
-//     } else {
-//         header.style.background = 'linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%)';
-//         header.style.backdropFilter = 'none';
-//     }
-// });
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 100) {
+        header.style.background = 'rgba(76, 175, 80, 0.95)';
+        header.style.backdropFilter = 'blur(10px)';
+    } else {
+        header.style.background = 'linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%)';
+        header.style.backdropFilter = 'none';
+    }
+});
 
 // Form submission handling
-const contactForm = document.querySelector('.contact-form form');
+const contactForm = document.querySelector('#contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -78,8 +78,34 @@ if (contactForm) {
         const data = Object.fromEntries(formData);
         
         // Simple validation
-        if (!data.name || !data.email || !data.message) {
+        let isValid = true;
+        const inputs = this.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            if (input.type === 'submit') return;
+            if (input.hasAttribute('required') && !input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = '#dc3545';
+            } else {
+                input.style.borderColor = '#e9ecef';
+            }
+        });
+        
+        if (!isValid) {
             showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
+            return;
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+            showNotification('يرجى إدخال بريد إلكتروني صحيح', 'error');
+            return;
+        }
+        
+        // Phone validation
+        const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+        if (!phoneRegex.test(data.phone)) {
+            showNotification('يرجى إدخال رقم هاتف صحيح', 'error');
             return;
         }
         
@@ -108,6 +134,7 @@ function showNotification(message, type = 'info') {
         transform: translateX(100%);
         transition: transform 0.3s ease;
         max-width: 300px;
+        font-family: 'Cairo', sans-serif;
     `;
     
     if (type === 'success') {
@@ -129,7 +156,9 @@ function showNotification(message, type = 'info') {
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
-            document.body.removeChild(notification);
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
         }, 300);
     }, 5000);
 }
@@ -177,14 +206,51 @@ document.querySelectorAll('.gallery-item').forEach(item => {
             lightbox.addEventListener('click', () => {
                 lightbox.style.opacity = '0';
                 setTimeout(() => {
-                    document.body.removeChild(lightbox);
+                    if (document.body.contains(lightbox)) {
+                        document.body.removeChild(lightbox);
+                    }
                 }, 300);
             });
         }
     });
 });
 
-// Initialize AOS
+// Add loading animation for images
+function loadImages() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+    });
+}
+
+// Add scroll progress indicator
+function addScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(45deg, #4CAF50, #2E7D32);
+        z-index: 10001;
+        transition: width 0.1s ease;
+    `;
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.offsetHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+// Initialize AOS and other features
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize AOS if it's loaded
     if (typeof AOS !== 'undefined') {
@@ -194,5 +260,17 @@ document.addEventListener('DOMContentLoaded', function() {
             once: true,
             offset: 100
         });
+    }
+    
+    // Load images with animation
+    loadImages();
+    
+    // Add scroll progress
+    addScrollProgress();
+    
+    // Add active class to first nav link
+    const firstNavLink = document.querySelector('.nav-link');
+    if (firstNavLink) {
+        firstNavLink.classList.add('active');
     }
 }); 
