@@ -8,6 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="description" content="مركز منابر الأمل - مركز متخصص في رعاية وتنمية الأطفال، نقدم خدمات تعليمية وعلاجية متكاملة">
+    <meta name="keywords" content="مركز منابر الأمل, رعاية الأطفال, العلاج الطبيعي, العلاج الوظيفي, التخاطب, حائل">
+    <meta name="author" content="مركز منابر الأمل">
+    <link rel="icon" href="images/1.png" type="image/png">
 </head>
 <body>
     <!-- Header -->
@@ -15,7 +19,7 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <img src="images/1.png" alt="مركز منابر الأمل" class="hero-logo-img">
+                    <img src="images/1.png" alt="مركز منابر الأمل" class="hero-logo-img" loading="lazy">
                     <span>مركز منابر الأمل</span>
                 </div>
                 <ul class="nav-menu">
@@ -96,14 +100,14 @@
                             <span class="stat-label">متخصص</span>
                         </div>
                         <div class="stat" data-aos="zoom-in" data-aos-delay="1000">
-                            <span class="stat-number">10+</span>
+                            <span class="stat-number">15+</span>
                             <span class="stat-label">سنوات خبرة</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-image" data-aos="fade-left" data-aos-duration="800">
                     <div class="image-container">
-                        <img src="images/10.webp" alt="مركز منابر الأمل" class="about-img">
+                        <img src="images/10.webp" alt="مركز منابر الأمل" class="about-img" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -173,22 +177,22 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="images/3.webp" alt="أنشطة تعليمية" class="gallery-img">
+                    <img src="images/3.webp" alt="أنشطة تعليمية" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="images/7.webp" alt="جلسات علاجية" class="gallery-img">
+                    <img src="images/7.webp" alt="جلسات علاجية" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="images/5.webp" alt="أنشطة ترفيهية" class="gallery-img">
+                    <img src="images/5.webp" alt="أنشطة ترفيهية" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-                    <img src="images/6.webp" alt="ورش عمل" class="gallery-img">
+                    <img src="images/6.webp" alt="ورش عمل" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="images/1.webp" alt="احتفالات" class="gallery-img">
+                        <img src="images/1.webp" alt="احتفالات" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600">
-                    <img src="images/11.webp" alt="رحلات تعليمية" class="gallery-img">
+                    <img src="images/11.webp" alt="رحلات تعليمية" class="gallery-img" loading="lazy">
                 </div>
             </div>
         </div>
@@ -241,18 +245,18 @@
                     </div>
                 </div>
                 <div class="contact-form" data-aos="fade-left" data-aos-duration="800">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" placeholder="الاسم الكامل" required>
+                            <input type="text" name="name" placeholder="الاسم الكامل" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="البريد الإلكتروني" required>
+                            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
                         </div>
                         <div class="form-group">
-                            <input style="text-align: end;" type="tel" placeholder="رقم الهاتف" required>
+                            <input type="tel" name="phone" placeholder="رقم الهاتف" required>
                         </div>
                         <div class="form-group">
-                            <select required>
+                            <select name="inquiry" required>
                                 <option value="">اختر نوع الاستفسار</option>
                                 <option value="general">استفسار عام</option>
                                 <option value="enrollment">تسجيل طفل</option>
@@ -261,7 +265,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="رسالتك" rows="5" required></textarea>
+                            <textarea name="message" placeholder="رسالتك" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
                     </form>
@@ -276,7 +280,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="images/1.png" alt="مركز منابر الأمل" class="footer-logo-img">
+                        <img src="images/1.png" alt="مركز منابر الأمل" class="footer-logo-img" loading="lazy">
                         <span>مركز منابر الأمل</span>
                     </div>
                     <p>نحمل الأمل في قلوب الأطفال ونعمل على تنمية قدراتهم وإطلاق إمكانياتهم الكامنة</p>
@@ -311,9 +315,9 @@
                 <div class="footer-section">
                     <h4>معلومات الاتصال</h4>
                     <div class="contact-info-footer">
-                        <p><i class="fas fa-map-marker-alt"></i> 📍 حائل، شارع الشيخ علي الجمعية </p>
+                        <p><i class="fas fa-map-marker-alt"></i>  📍 حائل، شارع الشيخ علي الجمعية</p>
                         <p><i class="fas fa-phone"></i> 📞 0559003200 - 0502437417</p>
-                        <p><i class="fas fa-envelope"></i> info@mnabralamel.com
+                        <p><i class="fas fa-envelope"></i> info@manabiralamel.com
                         </p>
                     </div>
                 </div>
@@ -327,6 +331,4 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html> 
-
